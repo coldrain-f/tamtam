@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,5 +23,13 @@ public class WordService {
         final Word wordEntity = wordRegisterRequestDTO.toEntity();
         final Word savedWordEntity = wordRepository.save(wordEntity);
         return savedWordEntity.getId();
+    }
+
+    public void remove(Long wordId) {
+        final Optional<Word> optional = wordRepository.findById(wordId);
+        if (optional.isEmpty()) {
+            throw new IllegalArgumentException("Word not found.");
+        }
+        wordRepository.deleteById(wordId);
     }
 }

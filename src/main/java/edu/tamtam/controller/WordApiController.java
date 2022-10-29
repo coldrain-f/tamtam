@@ -30,4 +30,9 @@ public class WordApiController {
         // Todo: DTO Validation 처리 필요
         return wordService.register(wordRegisterRequestDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public void remove(@PathVariable("id") Long wordId) {
+        wordService.remove(wordId);
+    }
 }
