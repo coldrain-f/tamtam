@@ -26,10 +26,8 @@ public class WordService {
     }
 
     public void remove(Long wordId) {
-        final Optional<Word> optional = wordRepository.findById(wordId);
-        if (optional.isEmpty()) {
-            throw new IllegalArgumentException("Word not found.");
-        }
+        wordRepository.findById(wordId)
+                .orElseThrow(() -> new IllegalArgumentException("Word not found."));
         wordRepository.deleteById(wordId);
     }
 }
