@@ -22,15 +22,6 @@ public class WordApiController {
     @GetMapping()
     public List<Word> getAllWords() {
         // Todo: 응답 값을 Entity -> DTO 로 하도록 변경 필요
-        // Todo: 동작 확인용 임시 데이터 추후에 지울 예정
-        final Word word = Word.builder()
-                .id(1L)
-                .name("delicious")
-                .meaning("맛있는")
-                .build();
-
-        wordRepository.save(word);
-
         return wordService.getAllWords();
     }
 
