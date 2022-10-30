@@ -30,4 +30,16 @@ public class Word {
         this.meaning = meaning;
         this.description = description;
     }
+
+    public void changeName(String name) {
+        this.name = name;
+    }
+
+    public void changeMeaning(String meaning) {
+        this.meaning = meaning;
+    }
+
+    public void changeDescription(String description) {
+        this.description = description;
+    }
 }

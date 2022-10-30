@@ -1,5 +1,6 @@
 package edu.tamtam.controller;
 
+import edu.tamtam.dto.WordModifyRequestDTO;
 import edu.tamtam.dto.WordRegisterRequestDTO;
 import edu.tamtam.entity.Word;
 import edu.tamtam.repository.WordRepository;
@@ -34,5 +35,10 @@ public class WordApiController {
     @DeleteMapping("/{id}")
     public void remove(@PathVariable("id") Long wordId) {
         wordService.remove(wordId);
+    }
+
+    @PatchMapping("/{id}")
+    public void modify(@PathVariable("id") Long wordId, @RequestBody() WordModifyRequestDTO wordModifyRequestDTO) {
+        wordService.modify(wordId, wordModifyRequestDTO);
     }
 }
