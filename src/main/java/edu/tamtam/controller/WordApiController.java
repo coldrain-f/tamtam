@@ -3,7 +3,7 @@ package edu.tamtam.controller;
 import edu.tamtam.dto.WordModifyRequestDTO;
 import edu.tamtam.dto.WordRegisterRequestDTO;
 import edu.tamtam.dto.WordResponseDTO;
-import edu.tamtam.repository.WordRepository;
+import edu.tamtam.entity.Word;
 import edu.tamtam.service.WordService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -19,8 +19,11 @@ import static java.util.stream.Collectors.toList;
 @RestController
 public class WordApiController {
 
+    // Todo: ControllerAdvice, ExceptionHandler 예외처리 필요
+    // Todo: Static Method 를 사용해서 Entity -> DTO 변환하는 방법이 적절한지 추가조사 필요
+    // Todo: Bean Validation 처리 필요
+
     private final WordService wordService;
-    private final WordRepository wordRepository;
 
     @GetMapping()
     public List<WordResponseDTO> findAll() {
@@ -28,6 +31,12 @@ public class WordApiController {
                 .stream()
                 .map(WordResponseDTO::of)
                 .collect(toList());
+    }
+
+    @GetMapping("/{id}")
+    public WordResponseDTO findById(@PathVariable("id") Long wordId) {
+        final Word wordEntity = wordService.findById(wordId);
+        return WordResponseDTO.of(wordEntity);
     }
 
 

@@ -2,6 +2,7 @@ package edu.tamtam.service;
 
 import edu.tamtam.dto.WordModifyRequestDTO;
 import edu.tamtam.dto.WordRegisterRequestDTO;
+import edu.tamtam.dto.WordResponseDTO;
 import edu.tamtam.entity.Word;
 import edu.tamtam.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,10 @@ public class WordService {
         wordEntity.changeName(wordModifyRequestDTO.getName());
         wordEntity.changeMeaning(wordModifyRequestDTO.getMeaning());
         wordEntity.changeDescription(wordModifyRequestDTO.getDescription());
+    }
+
+    public Word findById(Long wordId) {
+        return wordRepository.findById(wordId)
+                .orElseThrow(() -> new IllegalArgumentException("Word not found."));
     }
 }
