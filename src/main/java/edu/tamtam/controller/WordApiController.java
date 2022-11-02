@@ -2,7 +2,7 @@ package edu.tamtam.controller;
 
 import edu.tamtam.dto.WordModifyRequestDTO;
 import edu.tamtam.dto.WordRegisterRequestDTO;
-import edu.tamtam.entity.Word;
+import edu.tamtam.dto.WordResponseDTO;
 import edu.tamtam.repository.WordRepository;
 import edu.tamtam.service.WordService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -21,9 +23,11 @@ public class WordApiController {
     private final WordRepository wordRepository;
 
     @GetMapping()
-    public List<Word> getAllWords() {
-        // Todo: 응답 값을 Entity -> DTO 로 하도록 변경 필요
-        return wordService.getAllWords();
+    public List<WordResponseDTO> getAllWords() {
+        return wordService.getAllWords()
+                .stream()
+                .map(WordResponseDTO::of)
+                .collect(toList());
     }
 
     @PostMapping()

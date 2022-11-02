@@ -23,9 +23,6 @@ public class Word {
     @Lob
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private WordEditStatus status;
-
     @Builder
     public Word(Long id, String name, String meaning, String description) {
         this.id = id;
