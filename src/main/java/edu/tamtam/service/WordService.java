@@ -16,7 +16,7 @@ public class WordService {
 
     private final WordRepository wordRepository;
 
-    public List<Word> getAllWords() {
+    public List<Word> findAll() {
         return wordRepository.findAll();
     }
 

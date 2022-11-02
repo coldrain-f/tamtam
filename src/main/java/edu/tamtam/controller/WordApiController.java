@@ -23,12 +23,13 @@ public class WordApiController {
     private final WordRepository wordRepository;
 
     @GetMapping()
-    public List<WordResponseDTO> getAllWords() {
-        return wordService.getAllWords()
+    public List<WordResponseDTO> findAll() {
+        return wordService.findAll()
                 .stream()
                 .map(WordResponseDTO::of)
                 .collect(toList());
     }
+
 
     @PostMapping()
     public Long register(@RequestBody() WordRegisterRequestDTO wordRegisterRequestDTO) {
