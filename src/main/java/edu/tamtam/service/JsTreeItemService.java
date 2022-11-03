@@ -1,5 +1,6 @@
 package edu.tamtam.service;
 
+import edu.tamtam.dto.JsTreeItemModifyRequestDTO;
 import edu.tamtam.dto.JsTreeItemRegisterRequestDTO;
 import edu.tamtam.entity.JsTreeItem;
 import edu.tamtam.repository.JsTreeItemRepository;
@@ -31,5 +32,12 @@ public class JsTreeItemService {
 
     public List<JsTreeItem> findAll() {
         return jsTreeItemRepository.findAllByParentIsNull();
+    }
+
+    public void modify(Long jsTreeItemId, JsTreeItemModifyRequestDTO jsTreeItemModifyRequestDTO) {
+        final JsTreeItem jsTreeItem = jsTreeItemRepository.findById(jsTreeItemId)
+                .orElseThrow(() -> new IllegalArgumentException("JsTreeItem not found."));
+
+        jsTreeItem.changeText(jsTreeItemModifyRequestDTO.getText());
     }
 }

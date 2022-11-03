@@ -1,5 +1,6 @@
 package edu.tamtam.controller;
 
+import edu.tamtam.dto.JsTreeItemModifyRequestDTO;
 import edu.tamtam.dto.JsTreeItemRegisterRequestDTO;
 import edu.tamtam.dto.JsTreeItemResponseDTO;
 import edu.tamtam.entity.JsTreeItem;
@@ -24,5 +25,10 @@ public class JsTreeItemApiController {
     @PostMapping
     public Long register(@RequestBody() JsTreeItemRegisterRequestDTO jsTreeItemRegisterRequestDTO) {
         return jsTreeItemService.register(jsTreeItemRegisterRequestDTO);
+    }
+
+    @PatchMapping("/{id}")
+    public void modify(@PathVariable("id") Long jsTreeItemId, JsTreeItemModifyRequestDTO jsTreeItemModifyRequestDTO) {
+        jsTreeItemService.modify(jsTreeItemId, jsTreeItemModifyRequestDTO);
     }
 }
