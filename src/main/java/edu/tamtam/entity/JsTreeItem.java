@@ -1,11 +1,14 @@
 package edu.tamtam.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,14 +24,20 @@ public class JsTreeItem {
 
     private String icon;
 
-    private String parentId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "parentId")
+    private JsTreeItem parent;
+
+    @OneToMany(mappedBy = "parent") // 위에 parent 랑 연관관계
+    private final List<JsTreeItem> children = new ArrayList<>();
 
     @Builder
-    public JsTreeItem(Long id, String text, String icon, String parentId) {
+    public JsTreeItem(Long id, String text, String icon, JsTreeItem parent, Long depth) {
         this.id = id;
         this.text = text;
         this.icon = icon;
-        this.parentId = parentId;
+        this.parent = parent;
     }
 
     public void changeText(String text) {
@@ -39,7 +48,7 @@ public class JsTreeItem {
         this.icon = icon;
     }
 
-    public void changeParentId(String parentId) {
-        this.parentId = parentId;
+    public void changeParent(JsTreeItem parent) {
+        this.parent = parent;
     }
 }

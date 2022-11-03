@@ -1,11 +1,13 @@
 package edu.tamtam.controller;
 
 import edu.tamtam.dto.JsTreeItemRegisterRequestDTO;
+import edu.tamtam.dto.JsTreeItemResponseDTO;
+import edu.tamtam.entity.JsTreeItem;
 import edu.tamtam.service.JsTreeItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/js_tree_items")
@@ -14,8 +16,13 @@ public class JsTreeItemApiController {
 
     private final JsTreeItemService jsTreeItemService;
 
+    @GetMapping
+    public List<JsTreeItem> findAll() {
+        return jsTreeItemService.findAll();
+    }
+
     @PostMapping
-    public Long register(JsTreeItemRegisterRequestDTO jsTreeItemRegisterRequestDTO) {
+    public Long register(@RequestBody() JsTreeItemRegisterRequestDTO jsTreeItemRegisterRequestDTO) {
         return jsTreeItemService.register(jsTreeItemRegisterRequestDTO);
     }
 }

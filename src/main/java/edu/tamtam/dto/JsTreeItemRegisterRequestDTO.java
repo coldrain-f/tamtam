@@ -10,14 +10,14 @@ public class JsTreeItemRegisterRequestDTO {
 
     private String text;
 
-    private String parentId;
+    private Long parentId;
 
     private String icon;
 
-    public JsTreeItem toEntity() {
+    public JsTreeItem toEntity(JsTreeItem parent) {
         return JsTreeItem.builder()
                 .text(this.text)
-                .parentId(this.parentId)
+                .parent(parent)
                 .icon(this.icon)
                 .build();
     }

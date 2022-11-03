@@ -6,6 +6,8 @@ import edu.tamtam.repository.JsTreeItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class JsTreeItemService {
@@ -13,9 +15,21 @@ public class JsTreeItemService {
     private final JsTreeItemRepository jsTreeItemRepository;
 
     public Long register(JsTreeItemRegisterRequestDTO jsTreeItemRegisterRequestDTO) {
-        final JsTreeItem jsTreeItem = jsTreeItemRegisterRequestDTO.toEntity();
+        final Long jsTreeItemParentId = jsTreeItemRegisterRequestDTO.getParentId();
+
+        JsTreeItem jsTreeItemParent = null;
+        if (!jsTreeItemParentId.equals(-1L)) {
+            jsTreeItemParent = jsTreeItemRepository.findById(jsTreeItemParentId)
+                    .orElseThrow(() -> new IllegalArgumentException("JsTreeItem not found."));
+        }
+
+        final JsTreeItem jsTreeItem = jsTreeItemRegisterRequestDTO.toEntity(jsTreeItemParent);
         final JsTreeItem savedJsTreeItem = jsTreeItemRepository.save(jsTreeItem);
+
         return savedJsTreeItem.getId();
     }
 
+    public List<JsTreeItem> findAll() {
+        return jsTreeItemRepository.findAllByParentIsNull();
+    }
 }
