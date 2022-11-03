@@ -40,4 +40,9 @@ public class JsTreeItemService {
 
         jsTreeItem.changeText(jsTreeItemModifyRequestDTO.getText());
     }
+
+    public void remove(Long jsTreeItemId) {
+        // Todo: 나중에 Soft Delete 로 변경 필요
+        jsTreeItemRepository.deleteById(jsTreeItemId);
+    }
 }
