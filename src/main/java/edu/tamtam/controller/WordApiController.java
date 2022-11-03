@@ -39,7 +39,6 @@ public class WordApiController {
         return WordResponseDTO.of(wordEntity);
     }
 
-
     @PostMapping()
     public Long register(@RequestBody() WordRegisterRequestDTO wordRegisterRequestDTO) {
         // Todo: DTO Validation 처리 필요
