@@ -25,6 +25,15 @@ public class JsTreeItemApiController {
         return jsTreeItemService.findAll();
     }
 
+    @GetMapping("/dfs/{id}")
+    public void dfs(@PathVariable("id") Long jsTreeItemId) {
+        final JsTreeItem jsTreeItem = jsTreeItemService.findById(jsTreeItemId);
+        final int[] visited = new int[10001];
+        visited[jsTreeItem.getId().intValue()] = 1;
+        System.out.println("current = " + jsTreeItem.getId());
+        jsTreeItemService.dfs(jsTreeItem, visited);
+    }
+
     @PostMapping
     public Long register(@RequestBody() JsTreeItemRegisterRequestDTO jsTreeItemRegisterRequestDTO) {
         return jsTreeItemService.register(jsTreeItemRegisterRequestDTO);

@@ -30,14 +30,29 @@ public class JsTreeItemService {
         return savedJsTreeItem.getId();
     }
 
+    public void dfs(JsTreeItem vertex, int[] visited) {
+        for (JsTreeItem currVertex : vertex.getChildren()) {
+            if (visited[currVertex.getId().intValue()] == 1) continue;
+            visited[currVertex.getId().intValue()] = 1;
+            System.out.println("current = " + currVertex.getId());
+            dfs(currVertex, visited);
+        }
+    }
+
+    public JsTreeItem findById(Long jsTreeItemId) {
+        return jsTreeItemRepository.findById(jsTreeItemId)
+                .orElseThrow(() -> new IllegalArgumentException("JsTreeItem not found."));
+    }
+
+
     public List<JsTreeItem> findAll() {
+        // DFS 를 돌리는 방법은?
+
         return jsTreeItemRepository.findAllByParentIsNull();
     }
 
     public void modify(Long jsTreeItemId, JsTreeItemModifyRequestDTO jsTreeItemModifyRequestDTO) {
-        final JsTreeItem jsTreeItem = jsTreeItemRepository.findById(jsTreeItemId)
-                .orElseThrow(() -> new IllegalArgumentException("JsTreeItem not found."));
-
+        final JsTreeItem jsTreeItem = this.findById(jsTreeItemId);
         jsTreeItem.changeText(jsTreeItemModifyRequestDTO.getText());
     }
 
