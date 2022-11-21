@@ -1,0 +1,19 @@
+body {
+    font-family: "Poppins", "Noto Sans KR", sans-serif
+}
+
+.noto-sans-kr {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.modal-title {
+    font-size: 16px;
+}
+
+#jstree {
+    font-size: 15px;
+}
+
+[contenteditable] {
+    outline: 1px solid transparent;
+}
