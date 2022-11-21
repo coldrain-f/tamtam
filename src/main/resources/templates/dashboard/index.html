@@ -8,27 +8,29 @@
     <link rel="shortcut icon" th:href="@{/dist/assets/media/logos/favicon.ico}"
           href="dist/assets/media/logos/favicon.ico"/>
 
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <!--Begin::JsTree CSS | Bootstrap5 style.bundle.css 보다 위에 추가해야 함. -->
+    <link th:href="@{/dist/assets/plugins/custom/jstree/jstree.bundle.css}"
+          href="dist/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css"/>
+
+    <!--Begin::Global Stylesheets Bundle(used by all pages)-->
     <link th:href="@{/dist/assets/css/style.bundle.css}" href="dist/assets/css/style.bundle.css" rel="stylesheet"
           type="text/css"/>
     <link th:href="@{/dist/assets/plugins/global/plugins.bundle.css}"
           href="dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
-    <!--end::Global Stylesheets Bundle-->
-    <!--begin::Fonts-->
+    <!--End::Global Stylesheets Bundle-->
+    <!--Begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <!--end::Fonts-->
+    <!--End::Fonts-->
 
     <!--Begin::JQuery | JsTree, DataTables 보다 위에 추가해야 함. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!--End::JQuery-->
 
-    <!--Begin::JsTree-->
-    <link th:href="@{/dist/assets/plugins/custom/jstree/jstree.bundle.css}"
-          href="dist/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css"/>
+    <!--Begin::JsTree Bundle-->
     <script th:src="@{/dist/assets/plugins/custom/jstree/jstree.bundle.js}"
             src="dist/assets/plugins/custom/jstree/jstree.bundle.js"></script>
-    <!--End::JsTree-->
+    <!--End::JsTree Bundle-->
 
     <!--Begin::DataTables-->
     <link th:href="@{/dist/assets/plugins/custom/datatables/datatables.bundle.css}"
@@ -128,14 +130,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-active-light btn-color-gray-600 btn-active-color-primary rounded-bottom-0 noto-sans-kr active"
                                        data-bs-toggle="tab" href="#kt_tab_pane_1">
-                                        <img src="./dist/assets/media/flags/united-states.svg" alt="language"
+                                        <img th:src="@{/dist/assets/media/flags/united-states.svg}"
+                                             src="./dist/assets/media/flags/united-states.svg" alt="language"
                                              class="h-15px mb-1 me-3 "/> 영어
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-active-light btn-color-gray-600 btn-active-color-primary rounded-bottom-0 noto-sans-kr"
                                        data-bs-toggle="tab" href="#kt_tab_pane_1">
-                                        <img src="./dist/assets/media/flags/japan.svg" alt="language"
+                                        <img th:src="@{/dist/assets/media/flags/japan.svg}"
+                                             src="./dist/assets/media/flags/japan.svg" alt="language"
                                              class="h-15px mb-1 me-3"/>일본어</a>
                                 </li>
                             </ul>
@@ -612,14 +616,14 @@
 <script th:src="@{/dist/custom/js/custom_datatables.js}"></script>
 <!--End::DataTables Javascript-->
 
-<!--begin::Javascript-->
-<!--begin::Global Javascript Bundle(used by all pages)-->
+<!--Begin::Javascript-->
+<!--Begin::Global Javascript Bundle(used by all pages)-->
 <script th:src="@{/dist/assets/plugins/global/plugins.bundle.js}"
         src="dist/assets/plugins/global/plugins.bundle.js"></script>
 <script th:src="@{/dist/assets/js/scripts.bundle.js}" src="dist/assets/js/scripts.bundle.js"></script>
 
-<!--end::Global Javascript Bundle-->
-<!--end::Javascript-->
+<!--End::Global Javascript Bundle-->
+<!--End::Javascript-->
 
 </body>
 </html>
