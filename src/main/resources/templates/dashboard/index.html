@@ -18,7 +18,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--end::Fonts-->
-    <!--Begin::JsTree -->
+
+    <!--Begin::JQuery | JsTree, DataTables 보다 위에 추가해야 함. -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--End::JQuery-->
+
+    <!--Begin::JsTree-->
     <link th:href="@{/dist/assets/plugins/custom/jstree/jstree.bundle.css}"
           href="dist/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css"/>
     <script th:src="@{/dist/assets/plugins/custom/jstree/jstree.bundle.js}"
@@ -31,10 +36,6 @@
     <script th:src="@{/dist/assets/plugins/custom/datatables/datatables.bundle.js}"
             src="dist/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--End::DataTables-->
-
-    <!--begin::Jquery-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <!--end::Jquery-->
 
     <style>
 
@@ -602,6 +603,14 @@
         </div>
     </div>
 </div>
+
+<!--Begin::JsTree Javascript-->
+<script th:src="@{/dist/custom/js/custom_jstree.js}"></script>
+<!--End::JsTree Javascript-->
+
+<!--Begin::DataTables Javascript-->
+<script th:src="@{/dist/custom/js/custom_datatables.js}"></script>
+<!--End::DataTables Javascript-->
 
 <!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
