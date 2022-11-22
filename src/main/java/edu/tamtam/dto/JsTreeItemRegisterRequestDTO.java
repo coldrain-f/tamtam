@@ -3,9 +3,11 @@ package edu.tamtam.dto;
 import edu.tamtam.entity.JsTreeItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class JsTreeItemRegisterRequestDTO {
 
     private String text;
