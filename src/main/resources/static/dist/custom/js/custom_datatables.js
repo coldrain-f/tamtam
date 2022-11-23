@@ -3,11 +3,10 @@ $("#datatables").DataTable({
     "order": [[1, "desc"]],
     "columns": [ //각 컬럼별 테이블 매핑
         {"target": 0, "data": "ALL", "orderable": false},
-        {"target": 1, "data": "WORD"},
-        {"target": 2, "data": "MEANING"},
-        {"target": 3, "data": "PRONUNCIATION"},
-        {"target": 4, "data": "RESENT LEARN DATE"},
-        {"target": 5, "data": "STATE", "orderable": false}, //정렬 비활성화
+        {"target": 1, "data": "단어"},
+        {"target": 2, "data": "뜻"},
+        {"target": 3, "data": "맞은 횟수"},
+        {"target": 4, "data": "틀린 횟수"},
     ],
     "scrollY": 410,
     "scrollX": true,
