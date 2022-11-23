@@ -23,6 +23,7 @@ const table = $("#datatables").DataTable({
         "<'table-responsive' tr>" +
 
         "<'row'" +
+        // "<'col-sm-12 col-md-12 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
         "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
         "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
         ">"
