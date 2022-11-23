@@ -1,4 +1,5 @@
-$("#datatables").DataTable({
+const table = $("#datatables").DataTable({
+    "select": false,
     //최초 표시시 정렬하기
     "order": [[1, "desc"]],
     "columns": [ //각 컬럼별 테이블 매핑
@@ -11,12 +12,14 @@ $("#datatables").DataTable({
     "scrollY": 410,
     "scrollX": true,
     "language": {
-        "lengthMenu": "Show _MENU_",
+        // show label 제거
+        // "lengthMenu": "Show _MENU_",
     },
     "dom":
         "<'row'" +
-        "<'col-sm-6 d-flex align-items-center justify-content-start' l>" +
-        "<'col-sm-6 d-flex align-items-center justify-content-end' f>" +
+        // show select ~ options 제거
+        // "<'col-sm-6 d-flex align-items-center justify-content-start' l>" +
+        "<'col-sm-12 d-flex align-items-center justify-content-end' f>" +
         ">" +
 
         "<'table-responsive' tr>" +
