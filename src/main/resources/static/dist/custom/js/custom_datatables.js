@@ -12,14 +12,12 @@ const table = $("#datatables").DataTable({
     "scrollY": 410,
     "scrollX": true,
     "language": {
-        // show label 제거
-        // "lengthMenu": "Show _MENU_",
+        "lengthMenu": "Show _MENU_",
     },
     "dom":
         "<'row'" +
-        // show select ~ options 제거
-        // "<'col-sm-6 d-flex align-items-center justify-content-start' l>" +
-        "<'col-sm-12 d-flex align-items-center justify-content-end' f>" +
+        "<'col-sm-6 d-flex align-items-center justify-content-start' l>" +
+        "<'col-sm-6 d-flex align-items-center justify-content-end' f>" +
         ">" +
 
         "<'table-responsive' tr>" +
